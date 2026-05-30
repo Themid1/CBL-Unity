@@ -1,0 +1,123 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|c:\\users\\20243958\\source\\repos\\cbl simulation\\models\\tank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|solutionrelative:models\\tank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|c:\\users\\20243958\\source\\repos\\cbl simulation\\models\\ballastsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|solutionrelative:models\\ballastsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|c:\\users\\20243958\\source\\repos\\cbl simulation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|c:\\users\\20243958\\source\\repos\\cbl simulation\\simulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|solutionrelative:simulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|c:\\users\\20243958\\source\\repos\\cbl simulation\\sensordata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|solutionrelative:sensordata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|c:\\users\\20243958\\source\\repos\\cbl simulation\\kalmanfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5188D8C1-5661-BBEF-2E16-96ECA46E1C6B}|CBL Simulation.csproj|solutionrelative:kalmanfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Tank.cs",
+              "DocumentMoniker": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Models\\Tank.cs",
+              "RelativeDocumentMoniker": "Models\\Tank.cs",
+              "ToolTip": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Models\\Tank.cs",
+              "RelativeToolTip": "Models\\Tank.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T15:08:18.775Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "KalmanFilter.cs",
+              "DocumentMoniker": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\KalmanFilter.cs",
+              "RelativeDocumentMoniker": "KalmanFilter.cs",
+              "ToolTip": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\KalmanFilter.cs",
+              "RelativeToolTip": "KalmanFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T12:20:08.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SensorData.cs",
+              "DocumentMoniker": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\SensorData.cs",
+              "RelativeDocumentMoniker": "SensorData.cs",
+              "ToolTip": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\SensorData.cs",
+              "RelativeToolTip": "SensorData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-24T12:01:58.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BallastSystem.cs",
+              "DocumentMoniker": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Models\\BallastSystem.cs",
+              "RelativeDocumentMoniker": "Models\\BallastSystem.cs",
+              "ToolTip": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Models\\BallastSystem.cs",
+              "RelativeToolTip": "Models\\BallastSystem.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T18:35:37.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Simulation.cs",
+              "DocumentMoniker": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Simulation.cs",
+              "RelativeDocumentMoniker": "Simulation.cs",
+              "ToolTip": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Simulation.cs",
+              "RelativeToolTip": "Simulation.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwBAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T18:45:25.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\20243958\\source\\repos\\CBL Simulation\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T19:03:24.242Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

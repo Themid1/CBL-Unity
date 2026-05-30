@@ -1,0 +1,14 @@
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.AssemblyInfoInputs.cache
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.AssemblyInfo.cs
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.csproj.CoreCompileInputs.cache
+C:\Users\20243958\source\repos\CBL Simulation\bin\Debug\net10.0\CBL Simulation.exe
+C:\Users\20243958\source\repos\CBL Simulation\bin\Debug\net10.0\CBL Simulation.deps.json
+C:\Users\20243958\source\repos\CBL Simulation\bin\Debug\net10.0\CBL Simulation.runtimeconfig.json
+C:\Users\20243958\source\repos\CBL Simulation\bin\Debug\net10.0\CBL Simulation.dll
+C:\Users\20243958\source\repos\CBL Simulation\bin\Debug\net10.0\CBL Simulation.pdb
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.dll
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\refint\CBL Simulation.dll
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.pdb
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\CBL Simulation.genruntimeconfig.cache
+C:\Users\20243958\source\repos\CBL Simulation\obj\Debug\net10.0\ref\CBL Simulation.dll
