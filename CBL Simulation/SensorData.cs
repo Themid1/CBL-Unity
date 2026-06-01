@@ -14,23 +14,27 @@ public class SensorData
     private static Random rand = new Random();
 
     // Fake sensor generator
-    public static SensorData GetLatest()
+    public static SensorData GetLatest(ValveState valves)
     {
+        float FlowIn = 10f + (float)(rand.NextDouble() * 0.2 - 0.1);
+        float FlowOut = 10f + (float)(rand.NextDouble() * 0.2 - 0.1);
+
+        // Multipliers
+        float leftInMult = valves.V1 ? 1f : 0f;
+        float leftOutMult = valves.V2 ? 1f : 0f;
+        float rightInMult = valves.V3 ? 1f : 0f;
+        float rightOutMult = valves.V4 ? 1f : 0f;
+
         return new SensorData
         {
-            // base flow + noise
-            LeftFlowIn = 2f + (float)(rand.NextDouble() * 0.2 - 0.1),
-            LeftFlowOut = 0.5f + (float)(rand.NextDouble() * 0.2 - 0.1),
 
-            RightFlowIn = 0,
-            RightFlowOut = 0.5f + (float)(rand.NextDouble() * 0.2 - 0.1),
+            LeftFlowIn = FlowIn * leftInMult,
+            LeftFlowOut = FlowOut * leftOutMult,
+            RightFlowIn = FlowIn * rightInMult,
+            RightFlowOut = FlowOut * rightOutMult,
 
-            // base pressure + noise
-            LeftPressure = 218f
-            + (float)(rand.NextDouble() * 40 - 20),  
-
-            RightPressure = 218f
-            + (float)(rand.NextDouble() * 40 - 20)  
+            LeftPressure = 218f + (float)(rand.NextDouble() * 40 - 20),
+            RightPressure = 218f + (float)(rand.NextDouble() * 40 - 20),
         };
     }
 }

@@ -8,6 +8,10 @@ public class Simulation
     BallastSystem system = new BallastSystem();
 
     KalmanFilter kalman = new KalmanFilter();
+    Controller controller = new Controller();
+
+    ValveState valves = new ValveState(); 
+
 
     float dt = 0.1f; // Time step in seconds
 
@@ -17,17 +21,18 @@ public class Simulation
         left.Mass = 2;
         right.Mass = 2;
 
-        while (true)
+        while (!controller.Finished)
         {
             Step();
-            Thread.Sleep(100); // Sleep for 100ms for readable console
+            Thread.Sleep(50); // Sleep for 100ms for readable console
         }
+        Console.WriteLine("System reached equilibrium. Simulation stopped.");
     }
 
     void Step()
     {
         // Get latest sensor data
-        SensorData data = SensorData.GetLatest();
+        SensorData data = SensorData.GetLatest(valves);
 
         //Kalman filter estimation
         var estimate = kalman.Update(data);
@@ -39,11 +44,18 @@ public class Simulation
         // Update system angle based on new masses
         system.UpdateAngle(left.Mass, right.Mass);
 
+        float thetaEst = system.Angle;
+        float thetaRef = 3f; // virtual disturbance
+
+        valves = controller.Update(thetaRef, thetaEst);
+
         Console.Clear();
 
         Console.WriteLine($"Left Mass: {left.Mass}");
         Console.WriteLine($"Right Mass: {right.Mass}");
-        Console.WriteLine($"Angle: {system.Angle}");
+        Console.WriteLine($"Error: {controller.Error}");
+        Console.WriteLine($"V1: {valves.V1} | V2: {valves.V2}");
+        Console.WriteLine($"V3: {valves.V3} | V4: {valves.V4}");
 
     }
 
