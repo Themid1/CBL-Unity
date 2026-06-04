@@ -7,7 +7,7 @@ public class Simulation
     Tank right = new Tank();
     BallastSystem system = new BallastSystem();
 
-    KalmanFilter kalman = new KalmanFilter();
+    KalmanFilter kalman;
     Controller controller = new Controller();
 
     ValveState valves = new ValveState(); 
@@ -18,15 +18,26 @@ public class Simulation
     public void Run()
     {
         //Initial conditions
-        left.Mass = 2;
-        right.Mass = 2;
+        left.Mass = 4f;
+        right.Mass = 4f;
+
+        // Initialize Kalman filter with independent initial masses
+        // Use very high pressureVariance to ignore pressure and rely on flow
+        // Increase flowVariance to account for actual sensor noise
+        kalman = new KalmanFilter(initialLeftMass: left.Mass, initialRightMass: right.Mass, pressureVariance: 1e10, flowVariance: 1e-6);
 
         while (!controller.Finished)
         {
             Step();
-            Thread.Sleep(50); // Sleep for 100ms for readable console
+            Thread.Sleep(200); // Sleep for 100ms for readable console
         }
-        Console.WriteLine("System reached equilibrium. Simulation stopped.");
+    }
+    public void Drain()
+    {
+        valves.V1 = true;
+        valves.V2 = true;  
+        valves.V3 = true;
+        valves.V4 = true; 
     }
 
     void Step()
@@ -45,9 +56,9 @@ public class Simulation
         system.UpdateAngle(left.Mass, right.Mass);
 
         float thetaEst = system.Angle;
-        float thetaRef = 3f; // virtual disturbance
+        float thetaRef = 0.26f; // around 15 deg
 
-        valves = controller.Update(thetaRef, thetaEst);
+        valves = controller.Update(thetaRef, thetaEst, left.Mass, right.Mass);
 
         Console.Clear();
 
@@ -56,6 +67,10 @@ public class Simulation
         Console.WriteLine($"Error: {controller.Error}");
         Console.WriteLine($"V1: {valves.V1} | V2: {valves.V2}");
         Console.WriteLine($"V3: {valves.V3} | V4: {valves.V4}");
+        if (controller.Finished)
+        {
+            Console.WriteLine($"Stop Reason: {controller.StopReason}");
+        }
 
     }
 

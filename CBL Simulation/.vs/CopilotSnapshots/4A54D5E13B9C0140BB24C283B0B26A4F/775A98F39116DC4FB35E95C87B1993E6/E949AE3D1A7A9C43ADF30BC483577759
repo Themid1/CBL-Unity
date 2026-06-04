@@ -1,0 +1,72 @@
+﻿using System;
+using System.Threading;
+
+public class Simulation
+{
+    Tank left = new Tank();
+    Tank right = new Tank();
+    BallastSystem system = new BallastSystem();
+
+    KalmanFilter kalman;
+    Controller controller = new Controller();
+
+    ValveState valves = new ValveState(); 
+
+
+    float dt = 0.1f; // Time step in seconds
+
+    public void Run()
+    {
+        //Initial conditions
+        left.Mass = 2;
+        right.Mass = 2;
+
+        // Initialize Kalman filter with independent initial masses
+        // Use very high pressureVariance to ignore pressure and rely on flow
+        // Increase flowVariance to account for actual sensor noise
+        kalman = new KalmanFilter(initialLeftMass: left.Mass, initialRightMass: right.Mass, pressureVariance: 1e10, flowVariance: 1e-6);
+
+        while (!controller.Finished)
+        {
+            Step();
+            Thread.Sleep(200); // Sleep for 100ms for readable console
+        }
+        Console.WriteLine("System reached equilibrium. Simulation stopped.");
+    }
+
+    void Step()
+    {
+        // Get latest sensor data
+        SensorData data = SensorData.GetLatest(valves);
+
+        //Kalman filter estimation
+        var estimate = kalman.Update(data);
+
+        // Update tanks with estimated masses
+        left.UpdateMass(estimate.leftMass);
+        right.UpdateMass(estimate.rightMass);
+
+        // Update system angle based on new masses
+        system.UpdateAngle(left.Mass, right.Mass);
+
+        float thetaEst = system.Angle;
+        float thetaRef = 0.26f; // around 15 deg
+
+        valves = controller.Update(thetaRef, thetaEst, left.Mass, right.Mass);
+
+        Console.Clear();
+
+        Console.WriteLine($"Left Mass: {left.Mass}");
+        Console.WriteLine($"Right Mass: {right.Mass}");
+        Console.WriteLine($"Error: {controller.Error}");
+        Console.WriteLine($"V1: {valves.V1} | V2: {valves.V2}");
+        Console.WriteLine($"V3: {valves.V3} | V4: {valves.V4}");
+        if (controller.Finished)
+        {
+            Console.WriteLine($"Stop Reason: {controller.StopReason}");
+        }
+
+    }
+
+}
+

@@ -1,0 +1,143 @@
+﻿//public class KalmanFilter
+//{
+//    // Initial conditions
+//    private float leftMass = 500f;
+//    private float rightMass = 500f;
+
+//    private float density = 1000f;
+
+//    public (float leftMass, float rightMass) Update(SensorData data)
+//    {
+//        float dt = 0.1f;
+
+//        // 1. Prediction
+//        float leftMassIn = density * data.LeftFlowIn;
+//        float leftMassOut = density * data.LeftFlowOut;
+
+//        float rightMassIn = density * data.RightFlowIn;
+//        float rightMassOut = density * data.RightFlowOut;
+
+//        leftMass += (leftMassIn - leftMassOut) * dt;
+//        rightMass += (rightMassIn - rightMassOut) * dt;
+
+//        return (leftMass, rightMass);
+//    }
+//}
+
+using System;
+
+public class KalmanFilter
+{
+    // STATE VARIABLES
+
+    private double leftMassEst;
+    private double rightMassEst;
+
+    private double leftVariance;
+    private double rightVariance;
+
+    // CONSTANTS
+
+    private readonly double deltaT;
+
+    private readonly double density;
+
+    private readonly double pressureVariance;
+    private readonly double flowVariance;
+
+    private readonly double area;
+
+    private readonly double g;
+
+    // INITIALIZATION
+
+    public KalmanFilter(
+        double initialLeftMass=20,
+        double initialRightMass=20,
+        double initialUncertainty=0.1,
+        double pressureVariance=2500,
+        double flowVariance=1e-12,
+        double deltaT = 0.1,
+        double area = 0.0296)
+    {
+        this.leftMassEst = initialLeftMass;
+        this.rightMassEst = initialRightMass;
+
+        this.leftVariance = initialUncertainty;
+        this.rightVariance = initialUncertainty;
+
+        this.pressureVariance = pressureVariance;
+        this.flowVariance = flowVariance;
+
+        this.deltaT = deltaT;
+        this.area = area;
+
+        this.density = 1000.0;
+        this.g = 9.81;
+    }
+
+    // UPDATE STEPS FOR 1 TANK:
+
+    private double UpdateMassEst(
+        double currentMass,
+        ref double variance,
+        double flowIn,
+        double flowOut,
+        double pressure)
+    {
+        double H = g / area;
+        // STEP 1: PREDICTION
+        double predictedMass =
+            currentMass +
+            density * (flowIn - flowOut) * deltaT;
+
+        // STEP 2: PREDICT UNCERTAINTY
+        double predictedVariance = 
+            variance +
+            Math.Pow(density * deltaT, 2) * flowVariance;
+
+        // STEP 3: EXPECTED PRESSURE
+        double expectedPressure =
+            (predictedMass * g) / area;
+
+        // STEP 4: KALMAN GAIN
+        double K =
+            (predictedVariance * H) /
+            (H * H * predictedVariance + pressureVariance);
+
+        // STEP 5: CORRECTION
+        double correctedMass =
+            predictedMass +
+            K * (pressure - expectedPressure);
+
+        // STEP 6: UPDATE UNCERTAINTY
+
+        variance =
+            (1 - K) * predictedVariance;
+
+        return correctedMass;
+    }
+
+    // MAIN UPDATE FUNCTION
+    public (float leftMass, float rightMass) Update(SensorData data)
+    {
+        leftMassEst = UpdateMassEst(
+            leftMassEst,
+            ref leftVariance,
+            data.LeftFlowIn,
+            data.LeftFlowOut,
+            data.LeftPressure
+        );
+
+        rightMassEst = UpdateMassEst(
+            rightMassEst,
+            ref rightVariance,
+            data.RightFlowIn,
+            data.RightFlowOut,
+            data.RightPressure
+        );
+
+        return ((float)leftMassEst, (float)rightMassEst);
+    }
+
+}

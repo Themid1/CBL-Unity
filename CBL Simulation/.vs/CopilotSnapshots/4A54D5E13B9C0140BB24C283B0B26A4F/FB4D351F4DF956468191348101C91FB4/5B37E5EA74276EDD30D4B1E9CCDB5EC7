@@ -1,0 +1,19 @@
+﻿public class BallastSystem
+{
+    // Constant k for tuning
+    public float Sensitivity = 0.01f;
+
+    // Output state
+    public float Angle;
+
+    // Compute
+    public float UpdateAngle(float leftMass, float rightMass)
+    {
+        float deltaMass = leftMass - rightMass;
+
+        Angle = Sensitivity * deltaMass;
+
+        return Angle;
+    }
+}
+

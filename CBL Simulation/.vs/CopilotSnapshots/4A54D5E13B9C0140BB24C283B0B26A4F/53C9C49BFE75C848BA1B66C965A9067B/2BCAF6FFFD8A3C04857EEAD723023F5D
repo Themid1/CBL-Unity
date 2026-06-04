@@ -1,0 +1,55 @@
+﻿using System;
+public class Controller
+{
+    public float Error { get; private set; }
+    public bool Finished { get; private set; }
+    public string StopReason { get; private set; }
+
+    public ValveState Update(float thetaRef, float thetaEst, float leftMass, float rightMass)
+    {
+        // Tuning
+        float epsilon = 0.1f;  // small deadband but not too tight
+
+        Error = thetaRef - thetaEst;
+
+        ValveState valves = new ValveState();
+
+        // Safety stop: if either tank reaches 4.5 kg, close all valves and finish
+        if (leftMass >= 4.5f || rightMass >= 4.5f)
+        {
+            valves.V1 = false;
+            valves.V2 = false;
+            valves.V3 = false;
+            valves.V4 = false;
+            Finished = true;
+            StopReason = "Safety limit reached (4.5 kg)";
+            return valves;
+        }
+
+        if (Math.Abs(Error) < epsilon)
+        {
+            Finished = true;
+            StopReason = "Target angle reached";
+        }
+
+        else if (Error > 0)
+        {
+            // Tilt left
+            valves.V1 = true;
+            valves.V2 = false;
+            valves.V3 = false;
+            valves.V4 = true;
+        }
+        else if (Error < 0)
+        {
+            // Tilt right
+            valves.V1 = false;
+            valves.V2 = true;
+            valves.V3 = true;
+            valves.V4 = false;
+        }
+
+
+        return valves;
+    }
+}

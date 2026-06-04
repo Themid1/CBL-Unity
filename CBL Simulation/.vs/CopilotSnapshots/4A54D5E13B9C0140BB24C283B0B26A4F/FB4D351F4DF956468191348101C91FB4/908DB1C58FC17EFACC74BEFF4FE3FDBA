@@ -1,0 +1,64 @@
+﻿using System;
+
+public class SensorData
+{
+    public float LeftFlowIn;
+    public float LeftFlowOut;
+
+    public float RightFlowIn;
+    public float RightFlowOut;
+
+    public float LeftPressure;
+    public float RightPressure;
+
+    private static Random rand = new Random();
+    private static float leftMassState = 2f;
+    private static float rightMassState = 2f;
+
+    // Fake sensor generator
+    public static SensorData GetLatest(ValveState valves)
+    {
+        float FlowIn = 0.1f + (float)(rand.NextDouble() * 0.02 - 0.01);
+        float FlowOut = 0.1f + (float)(rand.NextDouble() * 0.02 - 0.01);
+
+        // Multipliers
+        float leftInMult = valves.V1 ? 1f : 0f;
+        float leftOutMult = valves.V2 ? 1f : 0f;
+        float rightInMult = valves.V3 ? 1f : 0f;
+        float rightOutMult = valves.V4 ? 1f : 0f;
+
+        // Update internal mass state based on flows
+        float dt = 0.1f;
+        float density = 1000f;
+        leftMassState += (FlowIn * leftInMult - FlowOut * leftOutMult) * dt;
+        rightMassState += (FlowIn * rightInMult - FlowOut * rightOutMult) * dt;
+
+        // Clamp masses to prevent negative
+        leftMassState = Math.Max(0, leftMassState);
+        rightMassState = Math.Max(0, rightMassState);
+
+        // Calculate pressure based on actual mass (P = rho * g * h = (mass/area) * g)
+        float area = 0.0296f;
+        float g = 9.81f;
+        float leftPressure = (leftMassState * g) / area + (float)(rand.NextDouble() * 10 - 5);
+        float rightPressure = (rightMassState * g) / area + (float)(rand.NextDouble() * 10 - 5);
+
+        return new SensorData
+        {
+            LeftFlowIn = FlowIn * leftInMult,
+            LeftFlowOut = FlowOut * leftOutMult,
+            RightFlowIn = FlowIn * rightInMult,
+            RightFlowOut = FlowOut * rightOutMult,
+
+            LeftPressure = leftPressure,
+            RightPressure = rightPressure,
+        };
+    }
+
+    // Call this to reset the sensor state with initial masses
+    public static void Initialize(float leftMass, float rightMass)
+    {
+        leftMassState = leftMass;
+        rightMassState = rightMass;
+    }
+}

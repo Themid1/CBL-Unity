@@ -1,0 +1,40 @@
+﻿using System;
+public class Controller
+{
+    public float Error { get; private set; }
+    public bool Finished { get; private set; }
+    public ValveState Update(float thetaRef, float thetaEst)
+    {
+        // Tuning
+        float epsilon = 0.1f; 
+
+        Error = thetaRef - thetaEst;
+
+        ValveState valves = new ValveState();
+
+        if (Math.Abs(Error) < epsilon)
+        {
+            Finished = true;
+        }
+
+        else if (Error > 0)
+        {
+            // Tilt left
+            valves.V1 = true;
+            valves.V2 = false;
+            valves.V3 = false;
+            valves.V4 = true;
+        }
+        else if (Error < 0)
+        {
+            // Tilt right
+            valves.V1 = false;
+            valves.V2 = true;
+            valves.V3 = true;
+            valves.V4 = false;
+        }
+        
+
+        return valves;
+    }
+}
