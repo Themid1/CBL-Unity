@@ -1,30 +1,4 @@
-﻿//public class KalmanFilter
-//{
-//    // Initial conditions
-//    private float leftMass = 500f;
-//    private float rightMass = 500f;
-
-//    private float density = 1000f;
-
-//    public (float leftMass, float rightMass) Update(SensorData data)
-//    {
-//        float dt = 0.1f;
-
-//        // 1. Prediction
-//        float leftMassIn = density * data.LeftFlowIn;
-//        float leftMassOut = density * data.LeftFlowOut;
-
-//        float rightMassIn = density * data.RightFlowIn;
-//        float rightMassOut = density * data.RightFlowOut;
-
-//        leftMass += (leftMassIn - leftMassOut) * dt;
-//        rightMass += (rightMassIn - rightMassOut) * dt;
-
-//        return (leftMass, rightMass);
-//    }
-//}
-
-using System;
+﻿using System;
 
 public class KalmanFilter
 {
@@ -39,7 +13,6 @@ public class KalmanFilter
     // CONSTANTS
 
     private readonly double deltaT;
-
     private readonly double density;
 
     private readonly double pressureVariance;
@@ -55,8 +28,8 @@ public class KalmanFilter
         double initialLeftMass=2,
         double initialRightMass=2,
         double initialUncertainty=0.1,
-        double pressureVariance=2500,
-        double flowVariance=1e-12,
+        double pressureVariance=1e15,
+        double flowVariance=1e-6,
         double deltaT = 0.1,
         double area = 0.0296)
     {
@@ -85,6 +58,7 @@ public class KalmanFilter
         double flowOut,
         double pressure)
     {
+
         double H = g / area;
         // STEP 1: PREDICTION
         double predictedMass =

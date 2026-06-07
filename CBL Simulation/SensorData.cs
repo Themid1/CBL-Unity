@@ -18,7 +18,7 @@ public class SensorData
     {
         // Flow in m³/s (SI units). Base flow: 0.0001 m³/s = 0.1 L/s
         float FlowIn = 0.0001f;
-        float FlowOut = 0.0001f;
+        float FlowOut = 0.0003f;
 
         // Multipliers
         float leftInMult = valves.V1 ? 1f : 0f;

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\20243958\\OneDrive - TU Eindhoven\\Desktop\\Y2 2025-2026\\CBL-Unity\\CBL Simulation\\CBL Simulation.csproj",
+      "projectUniqueName": "C:\\Users\\20243958\\source\\repos\\CBL-Unity\\CBL Simulation\\CBL Simulation.csproj",
       "projectName": "CBL Simulation",
-      "projectPath": "C:\\Users\\20243958\\OneDrive - TU Eindhoven\\Desktop\\Y2 2025-2026\\CBL-Unity\\CBL Simulation\\CBL Simulation.csproj",
+      "projectPath": "C:\\Users\\20243958\\source\\repos\\CBL-Unity\\CBL Simulation\\CBL Simulation.csproj",
       "packagesPath": "C:\\Users\\20243958\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\20243958\\OneDrive - TU Eindhoven\\Desktop\\Y2 2025-2026\\CBL-Unity\\CBL Simulation\\obj\\",
+      "outputPath": "C:\\Users\\20243958\\source\\repos\\CBL-Unity\\CBL Simulation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\20243958\\AppData\\Roaming\\NuGet\\NuGet.Config",

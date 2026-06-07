@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CBL Simulation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f986b23875e245d2661c598c61307de08c6f34d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7bb5b0b3f8ede06974dc8f59c381efdb36216f8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CBL Simulation")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CBL Simulation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
